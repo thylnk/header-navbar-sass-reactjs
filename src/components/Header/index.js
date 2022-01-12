@@ -4,7 +4,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import classes from './Header.module.scss';
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [size, setSize] = useState({
     width: undefined,

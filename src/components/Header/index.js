@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './Header.module.scss';
 
 export default function Header() {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const [size, setSize] = useState({
@@ -36,26 +38,29 @@ export default function Header() {
     }
   }, [size.width, menuOpen]);
 
+  const ctaClickHandler = () => {
+    navigate("/page-cta");
+  }
+
   return (
     <header className={classes.header}>
       <div className={classes.header_content}>
         <h2 className={classes.header_content_logo}>Navbar</h2>
 
         <nav
-          className={`${classes.header_content_nav} ${menuOpen ? classes.isMenu : ''
-            }`}>
+          className={`${classes.header_content_nav} ${menuOpen ? classes.isMenu : ''}`}>
           <ul>
             <li>
-              <a href="/">PageOne</a>
+              <Link to="/page-one">PageOne</Link>
             </li>
             <li>
-              <a href="/">PageTwo</a>
+              <Link to="/page-two">PageTwo</Link>
             </li>
             <li>
-              <a href="/">PageThree</a>
+              <Link to="/page-three">PageThree</Link>
             </li>
           </ul>
-          <button>CTA Page</button>
+          <button onClick={ctaClickHandler}>CTA Page</button>
         </nav>
         <div className={classes.header_content_toggle}>
           {menuOpen ? (
